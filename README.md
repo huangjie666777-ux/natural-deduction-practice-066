@@ -1,13 +1,36 @@
-# Natural Deduction Practice
+# 自然演绎证明练习
 
-React and TypeScript application scaffold.
+基于 React 19 + TypeScript 5.8 + Vite 的命题逻辑自然演绎（Fitch 风格）练习网页。
+学生逐步书写证明行与嵌套假设分支，系统逐步校验并即时反馈。
+
+## 运行
 
 ```sh
 npm install
-npm run dev
-npm run build
-npm test
+npm run dev      # 启动开发服务器（默认 http://localhost:5173）
+npm run build    # 类型检查 + 生产构建
+npm test         # 运行 vitest 单元测试
+npm run preview  # 预览生产构建
 ```
 
-Node.js 22.19.0, React 19.0.0, TypeScript 5.8.3, Vite 6.2.0.
-The test runner is available; no application tests or proof logic are implemented in the scaffold.
+## 操作说明
+
+- **选择题目**：顶部下拉框选择内置练习（含嵌套假设、分情况证明等），或点“自定义题目”输入前提（每行一个）与目标公式。
+- **公式语法**：原子为大写字母串（可含数字），联结词 ∧、∨、→ 与圆括号；优先级 ∧ > ∨ > →，→ 右结合，其余左结合。语法错误会指出第几个字符，输入内容保留可继续修改。公式按语法树比较，逻辑等价不算相同。
+- **添加步骤**：顶层或分支内点“+ 添加一行”；“+ 开启假设分支”新建子分支，分支第一行固定为假设行。
+- **编辑步骤**：每行可编辑公式、选择规则（前提/假设/重申/∧I/∧E/∨I/∨E/→I/→E）、填写行引用与分支引用（填行号/分支号，内部绑定稳定 id）。点击引用标签可定位到原行。
+- **关闭分支**：分支完成后点“关闭分支”才能被 →I、∨E 引用；已关闭分支内部的行对外部不可见。
+- **删除**：删除行或分支后，引用它的步骤会明确报“引用失效”，不会自动改指其他行。
+- **完成判定**：所有步骤有效、全部分支已关闭、且顶层最后一行与目标公式语法树相同时，显示“证明完成”。
+- **进度保存**：证明状态自动保存到 localStorage，刷新页面后恢复；“重置本题”清空当前证明。
+
+## 模块结构
+
+- `src/logic/formula.ts` — 公式语法树、递归下降解析器（带错误定位）、结构化相等与打印。
+- `src/logic/proof.ts` — 证明数据模型（行 / 分支框、稳定 id）、先序索引、行号与可见性（作用域）计算。
+- `src/logic/validate.ts` — 逐行规则校验、依赖无效传播、分支有效性与完成判定。
+- `src/logic/exercises.ts` — 内置练习题。
+- `src/state/useProof.ts` — React 状态管理（reducer）与 localStorage 持久化。
+- `src/components/` — 页面交互：证明树渲染（ProofView）、题目设置（SetupBar）、规则速查（CheatSheet）。
+- `src/logic/*.test.ts` — 解析器与校验规则的单元测试。
+

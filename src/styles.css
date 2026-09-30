@@ -1,0 +1,265 @@
+:root {
+  font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  color: #1f2933;
+  background: #f5f7fa;
+}
+
+body {
+  margin: 0;
+}
+
+main {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 16px 24px 64px;
+}
+
+h1 {
+  font-size: 22px;
+}
+
+button {
+  border: 1px solid #c3cbd6;
+  background: #fff;
+  border-radius: 6px;
+  padding: 3px 10px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+button:hover {
+  background: #eef2f7;
+}
+
+button.danger {
+  color: #b42318;
+  border-color: #f0b8b2;
+}
+
+input, select, textarea {
+  font: inherit;
+  font-size: 14px;
+  padding: 3px 6px;
+  border: 1px solid #c3cbd6;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.setup-bar {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.setup-bar label {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.custom-panel {
+  flex-basis: 100%;
+  border: 1px solid #d7dee8;
+  border-radius: 8px;
+  padding: 10px 14px;
+  background: #fff;
+}
+
+.custom-panel textarea {
+  width: 100%;
+  box-sizing: border-box;
+  font-family: ui-monospace, monospace;
+}
+
+.error-text {
+  color: #b42318;
+}
+
+.ex-desc {
+  color: #52606d;
+  margin: 4px 0;
+}
+
+.goal-bar {
+  display: flex;
+  gap: 24px;
+  padding: 8px 12px;
+  background: #fff;
+  border: 1px solid #d7dee8;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  font-family: ui-monospace, monospace;
+}
+
+.goal {
+  font-weight: 600;
+}
+
+.completion {
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: #eef2f7;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.completion.done {
+  background: #d3f8df;
+  color: #0c6b33;
+  font-weight: 600;
+}
+
+.proof-root {
+  background: #fff;
+  border: 1px solid #d7dee8;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.proof-box {
+  border-left: 3px solid #7b93b8;
+  background: #f8fafd;
+  margin: 6px 0 6px 8px;
+  padding: 6px 8px;
+  border-radius: 0 6px 6px 0;
+}
+
+.proof-box.closed {
+  border-left-color: #9aa7bd;
+  background: #f1f4f9;
+}
+
+.box-header {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 13px;
+  color: #3e4c63;
+  margin-bottom: 4px;
+}
+
+.box-tag {
+  font-weight: 600;
+}
+
+.box-asm {
+  font-family: ui-monospace, monospace;
+}
+
+.line-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 4px 6px;
+  border-radius: 6px;
+  margin: 2px 0;
+}
+
+.line-row.flash {
+  animation: flash 1.2s;
+}
+
+@keyframes flash {
+  0%, 60% { background: #fff3bf; }
+  100% { background: transparent; }
+}
+
+.line-no {
+  min-width: 26px;
+  text-align: right;
+  color: #7b8794;
+  font-family: ui-monospace, monospace;
+  font-size: 13px;
+}
+
+.formula-input {
+  width: 220px;
+  font-family: ui-monospace, monospace;
+}
+
+.line-row.status-error .formula-input {
+  border-color: #e08080;
+}
+
+.refs-editor {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  font-size: 12px;
+  color: #52606d;
+}
+
+.refs-editor input {
+  width: 70px;
+  font-size: 13px;
+}
+
+.refs-editor input.bad {
+  border-color: #b42318;
+  background: #fff5f5;
+}
+
+.ref-chips {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.chip {
+  padding: 1px 8px;
+  font-size: 12px;
+  border-radius: 999px;
+  background: #e4ebf5;
+  border: none;
+}
+
+.chip.dangling {
+  background: #fde8e7;
+  color: #b42318;
+  text-decoration: line-through;
+}
+
+.verdict {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.verdict.ok { color: #0c6b33; }
+.verdict.error { color: #b42318; }
+.verdict.dep { color: #b54708; }
+
+.verdict-msg {
+  font-size: 12px;
+  color: #7b8794;
+  flex-basis: 100%;
+  padding-left: 34px;
+}
+
+.box-actions {
+  display: flex;
+  gap: 8px;
+  margin: 6px 0 2px 34px;
+}
+
+.cheatsheet {
+  margin-top: 16px;
+  background: #fff;
+  border: 1px solid #d7dee8;
+  border-radius: 8px;
+  padding: 8px 14px;
+}
+
+.cheatsheet table {
+  border-collapse: collapse;
+  margin: 8px 0;
+  font-size: 13px;
+}
+
+.cheatsheet th, .cheatsheet td {
+  border: 1px solid #d7dee8;
+  padding: 4px 10px;
+  text-align: left;
+}
+
